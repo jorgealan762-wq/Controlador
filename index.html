@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Codebeautify.org Text to HTML Converter</title>
+	</head>
+	<body>
+		<p>
+
+			<!DOCTYPE html>
+			<html lang="es">
+				<head>
+					<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<title>Cálculo de Tarifa Avanzado</title>
+							<!-- Tailwind CSS via CDN -->
+							<script src="https://cdn.tailwindcss.com"></script>
+							<!-- FontAwesome Icons -->
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+								<!-- Inter Font -->
+								<link rel="preconnect" href="https://fonts.googleapis.com">
+									<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+										<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+											<script> 
+    tailwind.config = { 
+      darkMode: 'class', 
+      theme: { 
+        extend: { 
+          fontFamily: { 
+            sans: ['Inter', 'Segoe UI', 'sans-serif'], 
+          }, 
+          colors: { 
+            brand: { 
+              50: '#eff6ff', 
+              100: '#dbeafe', 
+              500: '#3b82f6', 
+              600: '#2563eb', 
+              700: '#1d4ed8', 
+            } 
+          } 
+        } 
+      } 
+    } 
+  </script>
+											<style> 
+    body { 
+      font-family: 'Inter', 'Segoe UI', sans-serif; 
+    } 
+    /* Subtle custom transitions */ 
+    .transition-all-200 { 
+      transition: all 0.2s ease-in-out; 
+    } 
+  </style>
+										</head>
+										<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex items-center justify-center p-3 sm:p-6 transition-colors duration-200">
+											<!-- Main Container -->
+											<div class="w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200/80 dark:border-slate-700/60 overflow-hidden transition-all-200">
+												<!-- Top Header Bar -->
+												<div class="bg-slate-900 text-white p-5 sm:p-6 pb-6 relative overflow-hidden">
+													<!-- Background subtle decorative light -->
+													<div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl pointer-events-none"></div>
+													<div class="flex justify-between items-center relative z-10">
+														<div class="flex items-center space-x-3">
+															<div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+																<i class="fa-solid font-bold fa-calculator text-lg"></i>
+															</div>
+															<div>
+																<h1 class="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">Cálculo de Tarifa</h1>
+																<p class="text-xs text-slate-400 font-medium">Control de Cobro Completo</p>
+															</div>
+														</div>
+														<!-- Dark Mode Toggle Button -->
+														<button id="btn-theme" type="button" aria-label="Cambiar tema" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-all">
+															<i class="fa-solid fa-moon text-sm"></i>
+														</button>
+													</div>
+													<!-- Realtime System Clock Banner -->
+													<div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm">
+														<span class="text-slate-400 font-medium flex items-center gap-1.5">
+															<span class="relative flex h-2 w-2">
+																<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+																<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+															</span> 
+          Hora Actual del Sistema: 
+        
+														</span>
+														<span id="lbl-hora-actual" class="font-mono font-bold text-emerald-400 tracking-wider text-base"> 
+          00:00:00 
+        </span>
+													</div>
+												</div>
+												<!-- Form Inputs Area -->
+												<div class="p-5 sm:p-6 space-y-5">
+													<!-- Hora de Ingreso Field -->
+													<div>
+														<div class="flex justify-between items-center mb-1.5">
+															<label for="entry-hora" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"> 
+            Hora de Ingreso 
+          </label>
+															<span class="text-[11px] text-slate-400 dark:text-slate-500">(ej. 09:08 o 09.08)</span>
+														</div>
+														<div class="relative rounded-xl shadow-sm">
+															<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+																<i class="fa-regular fa-clock"></i>
+															</div>
+															<input  
+            type="text"  
+            id="entry-hora"  
+            placeholder="HH:MM"  
+            maxLength="5" 
+            class="w-full pl-10 pr-24 py-2.5 text-base font-semibold bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition-all text-slate-900 dark:text-white" 
+          >
+																<button  
+            type="button"  
+            id="btn-ahora"  
+            title="Establecer hora actual"  
+            class="absolute right-1.5 top-1.5 bottom-1.5 px-3 text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/80 rounded-lg transition-colors border border-blue-200/60 dark:border-blue-800/50 flex items-center gap-1" 
+          >
+																	<i class="fa-solid fa-bolt text-[10px]"></i> 
+            Ahora 
+          
+																</button>
+															</div>
+															<!-- Quick Time Adjustments -->
+															<div class="flex items-center gap-1.5 mt-2">
+																<span class="text-[11px] text-slate-400 font-medium mr-1">Rápido:</span>
+																<button type="button" id="btn-sub-30" class="px-2 py-0.5 text-[11px] rounded-md bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium transition-colors">-30m</button>
+																<button type="button" id="btn-sub-60" class="px-2 py-0.5 text-[11px] rounded-md bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium transition-colors">-1h</button>
+																<button type="button" id="btn-sub-120" class="px-2 py-0.5 text-[11px] rounded-md bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium transition-colors">-2h</button>
+																<button type="button" id="btn-limpiar" class="ml-auto px-2 py-0.5 text-[11px] text-rose-500 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-md font-medium transition-colors">Limpiar</button>
+															</div>
+														</div>
+														<!-- Grid for Nº de Personas & ¿Pagó al principio? -->
+														<div class="grid grid-cols-2 gap-3.5">
+															<!-- Nº de Personas Input -->
+															<div>
+																<label for="entry-personas" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5"> 
+            Nº Personas 
+          </label>
+																<div class="flex items-center">
+																	<button  
+              type="button"  
+              id="btn-minus-persona"  
+              class="w-9 h-[42px] bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-200 rounded-l-xl font-bold flex items-center justify-center border border-r-0 border-slate-300 dark:border-slate-700 active:scale-95 transition-all" 
+            >
+																		<i class="fa-solid fa-minus text-xs"></i>
+																	</button>
+																	<input  
+              type="number"  
+              id="entry-personas"  
+              min="1"  
+              max="100"  
+              value="1"  
+              class="w-full text-center h-[42px] font-bold text-slate-900 dark:text-white bg-slate-50 dark:bg-slate-900/60 border-y border-slate-300 dark:border-slate-700 outline-none focus:ring-1 focus:ring-blue-500" 
+            >
+																		<button  
+              type="button"  
+              id="btn-plus-persona"  
+              class="w-9 h-[42px] bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-200 rounded-r-xl font-bold flex items-center justify-center border border-l-0 border-slate-300 dark:border-slate-700 active:scale-95 transition-all" 
+            >
+																			<i class="fa-solid fa-plus text-xs"></i>
+																		</button>
+																	</div>
+																</div>
+																<!-- ¿Pagó al principio? Select -->
+																<div>
+																	<label for="combo-pago" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5"> 
+            ¿Pagó al inicio? 
+          </label>
+																	<div class="relative">
+																		<select  
+              id="combo-pago"  
+              class="w-full h-[42px] px-3 font-semibold bg-slate-50 dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none cursor-pointer text-slate-900 dark:text-white pr-8 transition-all" 
+            >
+																			<option value="Sí">Sí (Sin recargo)</option>
+																			<option value="No">No (+6 Bs recargo)</option>
+																		</select>
+																		<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+																			<i class="fa-solid fa-chevron-down text-xs"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- Resumen / Results Box -->
+															<div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-sm relative overflow-hidden">
+																<div class="flex justify-between items-center pb-2.5 mb-3 border-b border-slate-200/80 dark:border-slate-700/80">
+																	<span class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+																		<i class="fa-solid fa-receipt text-blue-500"></i> Resumen de Cobro 
+          
+																	</span>
+																	<span id="badge-estado" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300"> 
+            En espera 
+          </span>
+																</div>
+																<div class="space-y-2.5 text-sm">
+																	<!-- Tiempo Transcurrido -->
+																	<div class="flex justify-between items-center">
+																		<span class="text-slate-500 dark:text-slate-400 font-medium">Tiempo Transcurrido:</span>
+																		<span id="lbl-tiempo-val" class="font-bold text-slate-800 dark:text-slate-200 text-right"> 
+              -- 
+            </span>
+																	</div>
+																	<!-- Tarifa Base por Persona -->
+																	<div class="flex justify-between items-center">
+																		<span class="text-slate-500 dark:text-slate-400 font-medium">Tarifa Tiempo (por pers.):</span>
+																		<span id="lbl-base-val" class="font-bold text-slate-800 dark:text-slate-200"> 
+              0 Bs 
+            </span>
+																	</div>
+																	<!-- Recargo por no pago (por persona y total) -->
+																	<div id="row-recargo" class="flex justify-between items-center text-amber-600 dark:text-amber-400 hidden">
+																		<span class="font-medium flex items-center gap-1 text-xs">
+																			<i class="fa-solid fa-circle-exclamation text-[10px]"></i> Recargo no pago inicial: 
+            
+																		</span>
+																		<span id="lbl-recargo-val" class="font-bold text-xs">+6 Bs/pers.</span>
+																	</div>
+																	<!-- Subtotal por Persona -->
+																	<div class="flex justify-between items-center pt-1 border-t border-dashed border-slate-200 dark:border-slate-700/60">
+																		<span class="text-slate-600 dark:text-slate-300 font-semibold text-xs">Total por Persona:</span>
+																		<span id="lbl-total-persona-val" class="font-bold text-slate-900 dark:text-white text-xs">0 Bs/pers.</span>
+																	</div>
+																	<!-- Total Divider -->
+																	<div class="pt-2 border-t border-slate-200 dark:border-slate-700/80 flex justify-between items-baseline">
+																		<div>
+																			<span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">Total a Cobrar</span>
+																			<span id="lbl-personas-calc" class="text-[11px] text-slate-400 dark:text-slate-500">1 persona(s)</span>
+																		</div>
+																		<div class="text-right">
+																			<span id="lbl-total-val" class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight"> 
+                0 Bs 
+              </span>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- Tariffs Rules Hint Collapsible / Drawer -->
+															<div class="rounded-xl bg-slate-50 dark:bg-slate-900/30 border border-slate-200/70 dark:border-slate-800 p-3">
+																<details class="group">
+																	<summary class="text-xs font-medium text-slate-500 dark:text-slate-400 cursor-pointer flex items-center justify-between list-none">
+																		<span class="flex items-center gap-1.5">
+																			<i class="fa-solid fa-circle-info text-blue-500"></i> Reglas de Tarifario 
+            
+																		</span>
+																		<i class="fa-solid fa-chevron-down text-[10px] group-open:rotate-180 transition-transform"></i>
+																	</summary>
+																	<ul class="mt-2 space-y-1 text-[11px] text-slate-500 dark:text-slate-400 pl-4 list-disc border-t border-slate-200/50 dark:border-slate-800 pt-2">
+																		<li>
+																			<strong>1ª hora:</strong> Gratuita (0 Bs).
+																		</li>
+																		<li>
+																			<strong>Hora adicional completa:</strong> 5 Bs / hora.
+																		</li>
+																		<li>
+																			<strong>Fracciones:</strong> 1 Bs por cada bloque de 10 minutos adicionales.
+																		</li>
+																		<li>
+																			<strong>Recargo:</strong> +6 Bs en el total si no se pagó al inicio.
+																		</li>
+																	</ul>
+																</details>
+															</div>
+														</div>
+														<!-- Footer -->
+														<div class="bg-slate-50 dark:bg-slate-900/80 px-6 py-3 border-t border-slate-200/80 dark:border-slate-800 text-center">
+															<p class="text-[11px] text-slate-400 dark:text-slate-500"> 
+        Sistema de Control de Cobro • Actualización continua en tiempo real 
+      </p>
+														</div>
+													</div>
+													<!-- JavaScript Application Code -->
+													<script> 
+    // DOM Element References 
+    const lblHoraActual = document.getElementById('lbl-hora-actual'); 
+    const entryEntrada = document.getElementById('entry-hora'); 
+    const entryPersonas = document.getElementById('entry-personas'); 
+    const comboPago = document.getElementById('combo-pago'); 
+     
+    const lblTiempoVal = document.getElementById('lbl-tiempo-val'); 
+    const lblBaseVal = document.getElementById('lbl-base-val'); 
+    const lblRecargoVal = document.getElementById('lbl-recargo-val'); 
+    const lblTotalPersonaVal = document.getElementById('lbl-total-persona-val'); 
+    const lblTotalVal = document.getElementById('lbl-total-val'); 
+    const lblPersonasCalc = document.getElementById('lbl-personas-calc'); 
+    const rowRecargo = document.getElementById('row-recargo'); 
+    const badgeEstado = document.getElementById('badge-estado'); 
+ 
+    const btnAhora = document.getElementById('btn-ahora'); 
+    const btnSub30 = document.getElementById('btn-sub-30'); 
+    const btnSub60 = document.getElementById('btn-sub-60'); 
+    const btnSub120 = document.getElementById('btn-sub-120'); 
+    const btnLimpiar = document.getElementById('btn-limpiar'); 
+     
+    const btnMinusPersona = document.getElementById('btn-minus-persona'); 
+    const btnPlusPersona = document.getElementById('btn-plus-persona'); 
+    const btnTheme = document.getElementById('btn-theme'); 
+ 
+    // Theme Management (Dark / Light) 
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { 
+      document.documentElement.classList.add('dark'); 
+    } 
+    btnTheme.addEventListener('click', () => { 
+      document.documentElement.classList.toggle('dark'); 
+      const isDark = document.documentElement.classList.contains('dark'); 
+      btnTheme.innerHTML = isDark ? '
+														<i class="fa-solid fa-sun text-sm"></i>' : '
+														<i class="fa-solid fa-moon text-sm"></i>'; 
+    }); 
+ 
+    // Format numbers with leading zeros 
+    const padTwo = (num) => String(num).padStart(2, '0'); 
+ 
+    // Auto format input as user types time 
+    entryEntrada.addEventListener('input', (e) => { 
+      let val = e.target.value.replace('.', ':'); 
+      // allow digits and colon 
+      val = val.replace(/[^0-9:]/g, ''); 
+       
+      // Auto insert colon if typing 4 digits (e.g., 0908 -> 09:08) 
+      if (val.length === 4 && !val.includes(':')) { 
+        val = val.slice(0, 2) + ':' + val.slice(2); 
+      } 
+      e.target.value = val; 
+      calcularTarifa(); 
+    }); 
+ 
+    // Helper to adjust entry time relative to current time 
+    function setRelativeEntryTime(minusMinutes) { 
+      const now = new Date(); 
+      now.setMinutes(now.getMinutes() - minusMinutes); 
+      const hh = padTwo(now.getHours()); 
+      const mm = padTwo(now.getMinutes()); 
+      entryEntrada.value = `${hh}:${mm}`; 
+      calcularTarifa(); 
+    } 
+ 
+    // Preset buttons 
+    btnAhora.addEventListener('click', () => setRelativeEntryTime(0)); 
+    btnSub30.addEventListener('click', () => setRelativeEntryTime(30)); 
+    btnSub60.addEventListener('click', () => setRelativeEntryTime(60)); 
+    btnSub120.addEventListener('click', () => setRelativeEntryTime(120)); 
+    btnLimpiar.addEventListener('click', () => { 
+      entryEntrada.value = ''; 
+      calcularTarifa(); 
+    }); 
+ 
+    // People Counter buttons 
+    btnMinusPersona.addEventListener('click', () => { 
+      let current = parseInt(entryPersonas.value) || 1; 
+      if (current > 1) { 
+        entryPersonas.value = current - 1; 
+        calcularTarifa(); 
+      } 
+    }); 
+ 
+    btnPlusPersona.addEventListener('click', () => { 
+      let current = parseInt(entryPersonas.value) || 1; 
+      if (current < 100) { 
+        entryPersonas.value = current + 1; 
+        calcularTarifa(); 
+      } 
+    }); 
+ 
+    entryPersonas.addEventListener('input', () => { 
+      let current = parseInt(entryPersonas.value); 
+      if (isNaN(current) || current < 1) entryPersonas.value = 1; 
+      calcularTarifa(); 
+    }); 
+ 
+    comboPago.addEventListener('change', calcularTarifa); 
+ 
+    /** 
+     * Core Calculation Logic 
+     * Directly matches Python Tkinter formula 
+     */ 
+    function calcularTarifa() { 
+      const ahora = new Date(); 
+       
+      // Update header clock 
+      lblHoraActual.textContent = `${padTwo(ahora.getHours())}:${padTwo(ahora.getMinutes())}:${padTwo(ahora.getSeconds())}`; 
+ 
+      const entradaStr = entryEntrada.value.trim().replace('.', ':'); 
+      const personasStr = entryPersonas.value.trim(); 
+      const pagoInicio = comboPago.value.trim(); 
+ 
+      // Validate people count 
+      let numPersonas = parseInt(personasStr); 
+      if (isNaN(numPersonas) || numPersonas < 1) { 
+        numPersonas = 1; 
+      } 
+ 
+      // Update personas count label 
+      lblPersonasCalc.textContent = `${numPersonas} persona${numPersonas > 1 ? 's' : ''}`; 
+ 
+      // Handle missing input 
+      if (!entradaStr) { 
+        lblTiempoVal.textContent = '--'; 
+        lblBaseVal.textContent = '0 Bs'; 
+        lblTotalPersonaVal.textContent = '0 Bs/pers.'; 
+        lblTotalVal.textContent = '0 Bs'; 
+        badgeEstado.textContent = 'Sin ingreso'; 
+        badgeEstado.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'; 
+        rowRecargo.classList.add('hidden'); 
+        return; 
+      } 
+ 
+      // Validate time format (HH:MM) 
+      const timeParts = entradaStr.split(':'); 
+      if (timeParts.length !== 2) { 
+        showInvalidFormat(); 
+        return; 
+      } 
+ 
+      const hh = parseInt(timeParts[0], 10); 
+      const mm = parseInt(timeParts[1], 10); 
+ 
+      if (isNaN(hh) || isNaN(mm) || hh < 0 || hh > 23 || mm < 0 || mm > 59) { 
+        showInvalidFormat(); 
+        return; 
+      } 
+ 
+      // Build Date object for entry 
+      const dtEntrada = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), hh, mm, 0); 
+ 
+      // Midnight / day transition handling: 
+      // If entry time is later than current time, assume user entered yesterday 
+      if (dtEntrada > ahora) { 
+        dtEntrada.setDate(dtEntrada.getDate() - 1); 
+      } 
+ 
+      // Calculate minute difference 
+      const diffMs = ahora - dtEntrada; 
+      const totalMinutos = Math.floor(diffMs / (1000 * 60)); 
+ 
+      // Fare Calculation Logic: 
+      // 1st hour gratis (<= 60 mins -> 0 Bs) 
+      // > 60 mins -> 5 Bs / full hour + 1 Bs per 10-min block 
+      let tarifaBase = 0; 
+      if (totalMinutos > 60) { 
+        const minutosACobrar = totalMinutos - 60; 
+        const horasCompletas = Math.floor(minutosACobrar / 60); 
+        const minutosRestantes = minutosACobrar % 60; 
+        const bloques10Min = Math.floor(minutosRestantes / 10); 
+ 
+        tarifaBase = (horasCompletas * 5) + (bloques10Min * 1); 
+      } 
+ 
+      // Recargo de 6 Bs POR PERSONA si no pagó al inicio 
+      const recargoPorPersona = (pagoInicio === 'No') ? 6 : 0; 
+      const tarifaTotalPorPersona = tarifaBase + recargoPorPersona; 
+       
+      // Total multiplicando por cantidad de personas 
+      const costoTotal = tarifaTotalPorPersona * numPersonas; 
+ 
+      // Update UI elements 
+      const horasTranscurridas = Math.floor(totalMinutos / 60); 
+      const minTranscurridos = totalMinutos % 60; 
+ 
+      lblTiempoVal.textContent = `${horasTranscurridas}h ${minTranscurridos}m (${totalMinutos} min)`; 
+      lblBaseVal.textContent = `${tarifaBase} Bs`; 
+      lblTotalPersonaVal.textContent = `${tarifaTotalPorPersona} Bs/pers.`; 
+      lblTotalVal.textContent = `${costoTotal} Bs`; 
+ 
+      // Recargo visibility and calculation detail 
+      if (recargoPorPersona > 0) { 
+        rowRecargo.classList.remove('hidden'); 
+        lblRecargoVal.textContent = numPersonas > 1  
+          ? `+6 Bs/pers. (+${recargoPorPersona * numPersonas} Bs total)`  
+          : `+6 Bs`; 
+      } else { 
+        rowRecargo.classList.add('hidden'); 
+      } 
+ 
+      // Badge status 
+      badgeEstado.textContent = totalMinutos <= 60 ? '1ª hora gratis' : 'Tarifa activa'; 
+      badgeEstado.className = totalMinutos <= 60  
+        ? 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-300/50' 
+        : 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 border border-amber-300/50'; 
+    } 
+ 
+    function showInvalidFormat() { 
+      lblTiempoVal.textContent = 'Formato inválido'; 
+      lblBaseVal.textContent = '--'; 
+      lblTotalPersonaVal.textContent = '--'; 
+      lblTotalVal.textContent = '--'; 
+      badgeEstado.textContent = 'Error'; 
+      badgeEstado.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-400'; 
+      rowRecargo.classList.add('hidden'); 
+    } 
+ 
+    // Real-time loop every 1 second 
+    setInterval(calcularTarifa, 1000); 
+ 
+    // Initial calculation on load 
+    calcularTarifa(); 
+  
+													</script>
+												</body>
+											</html> 
+										</p>
+									</body>
+								</html>
